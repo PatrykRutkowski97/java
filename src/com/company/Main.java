@@ -1,5 +1,8 @@
 package com.company;
 
+import devices.Car;
+import devices.Phone;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -22,7 +25,7 @@ public class Main {
         Human human = new Human("Jan", "Kowalski");
         Car car1 = new Car("Kia", "Stinger", 270, "red");
 
-        //human.car = car1;
+        // human.car = car1;
 
         System.out.println("----------------------------- ZADANIE 3 i 4 -----------------------------");
         human.setSalary(-100.0);
@@ -44,5 +47,27 @@ public class Main {
         // przypadek 3
         Human human4 = new Human("Andrzej", "Bogacz", 20000.0);
         human4.setCar(pasek);
+
+        System.out.println("----------------------------- ZADANIE 6 -----------------------------");
+
+        Car carA = new Car("Fiat", "126p", 110, "blue");
+        Car carB = new Car("Fiat", "126p", 110, "blue");
+
+        System.out.println("Print whole object:"); // in practice toString() method
+        System.out.println(carA);
+        System.out.println(carB);
+
+        System.out.println("\nCar comparison using '==' : result: "+ (carA == carB));
+        System.out.println("Car comparison using equals() - without override: was false");
+        System.out.println("Car comparison using equals() - after override: "+ carA.equals(carB)); // correct comparison
+
+        // ------------ toString() ----------------
+
+        Phone phone = new Phone("Samsung", "Note 10", 8.8,"Android");
+        System.out.println(animal);
+        System.out.println(phone);
+        System.out.println(pasek);
+        System.out.println(human3);
+
     }
 }

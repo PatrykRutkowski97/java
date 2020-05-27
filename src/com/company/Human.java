@@ -1,7 +1,7 @@
 package com.company;
 
-import com.company.Animal;
-import com.company.Phone;
+import devices.Car;
+import devices.Phone;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -57,5 +57,10 @@ public class Human {
             System.out.println("Congratulations " + this.firstName + "! You bought " + car.producer + " " + car.model + " on instalments!");
         } else
             System.out.println("Sorry " + this.firstName + ".. You can't afford a car. You should change job or go to university.");
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName + " " + salary + " " + phone + " " + pet + " " + car;
     }
 }
