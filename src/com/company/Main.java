@@ -69,5 +69,10 @@ public class Main {
         System.out.println(pasek);
         System.out.println(human3);
 
+        System.out.println("----------------------------- ZADANIE 7 -----------------------------");
+
+        phone.turnOn();
+        car1.turnOn();
+
     }
 }

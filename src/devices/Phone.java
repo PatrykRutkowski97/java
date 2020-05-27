@@ -1,6 +1,6 @@
 package devices;
 
-public class Phone {
+public class Phone extends Device {
     final public String producer;
     final public String model;
     final public Double screenSize;
@@ -16,5 +16,11 @@ public class Phone {
     @Override
     public String toString() {
         return producer + " " + model + " " + screenSize + " " + operatingSystem;
+    }
+
+    @Override
+    public void turnOn() {
+        this.mode = "On";
+        System.out.println(this.producer+" "+this.model+" starts working...");
     }
 }

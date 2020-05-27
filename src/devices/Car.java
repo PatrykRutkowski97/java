@@ -1,7 +1,6 @@
 package devices;
 
-public class Car {
-    final public String producer;
+public class Car extends Device {
     final public String model;
     public Double value;
     public int maxSpeed;
@@ -40,5 +39,11 @@ public class Car {
     @Override
     public String toString() {
         return producer + " " + model + " " + value + " " + maxSpeed + " " + color;
+    }
+
+    @Override
+    public void turnOn() {
+        this.mode = "On";
+        System.out.println(this.producer+" "+this.model+" starts working...");
     }
 }
