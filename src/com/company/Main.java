@@ -24,5 +24,9 @@ public class Main {
 
         human.car = car1;
 
+        System.out.println("----------------------------- ZADANIE 3 i 4 -----------------------------");
+        human.setSalary(-100.0);
+        human.setSalary(2999.99);
+        human.getSalary();
     }
 }
