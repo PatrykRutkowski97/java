@@ -38,6 +38,5 @@ public class Animal {
             weight -= 1;
             System.out.println(this.name+" was on a walk. Weight reduced to " + this.weight + " kg.");
         }
-
     }
 }
