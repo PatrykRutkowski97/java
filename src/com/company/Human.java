@@ -9,5 +9,11 @@ public class Human {
     private Double salary;
     protected Phone phone;
     public Animal pet;
+    public Car car;
 
+    public Human(String firstName, String lastName)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 }
