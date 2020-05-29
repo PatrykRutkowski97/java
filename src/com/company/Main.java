@@ -1,6 +1,7 @@
 package com.company;
 
 import devices.Car;
+import devices.Device;
 import devices.Phone;
 
 public class Main {
@@ -57,13 +58,13 @@ public class Main {
         System.out.println(carA);
         System.out.println(carB);
 
-        System.out.println("\nCar comparison using '==' : result: "+ (carA == carB));
+        System.out.println("\nCar comparison using '==' : result: " + (carA == carB));
         System.out.println("Car comparison using equals() - without override: was false");
-        System.out.println("Car comparison using equals() - after override: "+ carA.equals(carB)); // correct comparison
+        System.out.println("Car comparison using equals() - after override: " + carA.equals(carB)); // correct comparison
 
         // ------------ toString() ----------------
 
-        Phone phone = new Phone("Samsung", "Note 10", 8.8,"Android");
+        Phone phone = new Phone("Samsung", "Note 10", 8.8, "Android");
         System.out.println(animal);
         System.out.println(phone);
         System.out.println(pasek);
@@ -73,6 +74,99 @@ public class Main {
 
         phone.turnOn();
         car1.turnOn();
+
+
+        System.out.println("----------------------------- ZADANIE 8 -----------------------------");
+        Animal petForSale = new Animal("dog", "Mailo");
+        Car carForSale = new Car("Fiat", "Panda", 120, "red", 1000.0, 1998);
+        Human buyer1 = new Human("Marcin", "Kowalski", 2000.0, 600.0);
+        Human seller1 = new Human("Krzysztof", "Krawczyk", 35000.0, 2000.0, petForSale);
+        Human buyer2 = new Human("Marcin", "Marciniak", 2000.0, 5500.0);
+        Human seller2 = new Human("Tomasz", "Adamek", 40000.0, 1000.0, carForSale);
+
+
+
+        System.out.println("\n-------- ANIMAL TRADE ---------");
+
+        System.out.println("-- checking the case if the buyer does not have enough money: --");
+        petForSale.sell(seller1, buyer1, 800.0);
+
+        System.out.println("\n-- checking the case if the buyer does not own the animal being sold: --");
+        petForSale.sell(buyer1, seller1, 500.0);
+
+        System.out.println("\nBefore transaction:" +
+                "\nBuyer cash: " + buyer1.getCash() +
+                "\nBuyer animal: " + buyer1.pet +
+                "\nSeller cash: " + seller1.getCash() +
+                "\nSeller animal: " + seller1.pet
+                + "\n");
+
+        petForSale.sell(seller1, buyer1, 500.0);
+
+        System.out.println("\nAfter transaction:" +
+                "\nBuyer cash: " + buyer1.getCash() +
+                "\nBuyer animal: " + buyer1.pet +
+                "\nSeller cash: " + seller1.getCash() +
+                "\nSeller animal: " + seller1.pet+
+                "\n");
+
+
+
+        System.out.println("-------- CAR TRADE ---------");
+
+        System.out.println("-- checking the case if the buyer does not have enough money: --");
+        carForSale.sell(seller2, buyer2, 34000.0);
+
+        System.out.println("\n-- checking the case if the buyer does not own the car being sold: --");
+        carForSale.sell(buyer2, seller2, 3000.0);
+
+        System.out.println("\nBefore transaction:" +
+                "\nBuyer cash: " + buyer2.getCash() +
+                "\nBuyer car: " + buyer2.getCar() +
+                "\nSeller cash: " + seller2.getCash() +
+                "\nSeller car: " + seller2.getCar()+
+                "\n");
+
+        carForSale.sell(seller2, buyer2, 3000.0);
+
+        System.out.println("\nAfter transaction:" +
+                "\nBuyer cash: " + buyer2.getCash() +
+                "\nBuyer car: " + buyer2.getCar() +
+                "\nSeller cash: " + seller2.getCash() +
+                "\nSeller car: " + seller2.getCar()+
+                "\n");
+
+
+
+        System.out.println("--------- PHONE TRADE ---------");
+
+        seller2.setPhone(phone);
+
+        System.out.println("-- checking the case if the buyer does not have enough money: --");
+        phone.sell(seller2, buyer2, 30000.0);
+
+        System.out.println("\n-- checking the case if the buyer does not own the phone being sold: --");
+        phone.sell(buyer2, seller2, 3000.0);
+
+        System.out.println("\nBefore transaction:" +
+                "\nBuyer cash: " + buyer2.getCash() +
+                "\nBuyer phone: " + buyer2.getPhone() +
+                "\nSeller cash: " + seller2.getCash() +
+                "\nSeller phone: " + seller2.getPhone()+
+                "\n");
+
+
+
+        phone.sell(seller2, buyer2, 300.0);
+
+        System.out.println("\nAfter transaction:" +
+                "\nBuyer cash: " + buyer2.getCash() +
+                "\nBuyer phone: " + buyer2.getPhone() +
+                "\nSeller cash: " + seller2.getCash() +
+                "\nSeller phone: " + seller2.getPhone());
+
+
+        // human.sell(human2, human3, 1.1); - can't sell human, because method sell(Human human, Human human, Double price) not exist in human class
 
     }
 }
