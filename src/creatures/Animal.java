@@ -1,9 +1,12 @@
-package com.company;
+package creatures;
 
+
+import com.company.Human;
+import com.company.Saleable;
 
 import java.io.File;
 
-public class Animal implements saleable {
+public abstract class Animal implements Saleable, Feedable {
     final String species;
     public String name;
     private Double weight;
@@ -22,7 +25,7 @@ public class Animal implements saleable {
             weight = 1.0;   // I assume that any other animal of a different species weighs 1 kg
     }
 
-    void feed() {
+    public void feed() {
         if (this.weight <= 0)
             System.out.println(this.name + " is dead. RIP");
         else {
@@ -31,7 +34,16 @@ public class Animal implements saleable {
         }
     }
 
-    void takeForWalk() {
+    public void feed(double foodWeight) {
+        if (this.weight <= 0)
+            System.out.println(this.name + " is dead. RIP");
+        else {
+            this.weight += foodWeight / 2;
+            System.out.println(this.name + " was fed " + foodWeight + "kg of food. Weight increased to " + this.weight + " kg.");
+        }
+    }
+
+    public void takeForWalk() {
 
         if (this.weight <= 0)
             System.out.println(this.name + " is dead. He won't stand up.");

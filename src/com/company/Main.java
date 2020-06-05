@@ -1,7 +1,9 @@
 package com.company;
 
+import creatures.Animal;
+import creatures.FarmAnimal;
+import creatures.Pet;
 import devices.Car;
-import devices.Device;
 import devices.Phone;
 
 public class Main {
@@ -9,14 +11,14 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("----------------------------- ZADANIE 1 -----------------------------");
-        Animal animal = new Animal("dog", "Ricki");
+        Animal animal = new Pet("dog", "Ricki");
         animal.feed();
         for (int i = 0; i < 8; i++)
             animal.takeForWalk();
 
         System.out.println("\nLet's kill another one...\n");
 
-        Animal animal2 = new Animal("cat", "Kitty");
+        Animal animal2 = new Pet("cat", "Kitty");
         animal2.feed();
         for (int i = 0; i < 8; i++)
             animal2.takeForWalk();
@@ -77,13 +79,12 @@ public class Main {
 
 
         System.out.println("----------------------------- ZADANIE 8 -----------------------------");
-        Animal petForSale = new Animal("dog", "Mailo");
+        Animal petForSale = new Pet("dog", "Mailo");
         Car carForSale = new Car("Fiat", "Panda", 120, "red", 1000.0, 1998);
         Human buyer1 = new Human("Marcin", "Kowalski", 2000.0, 600.0);
         Human seller1 = new Human("Krzysztof", "Krawczyk", 35000.0, 2000.0, petForSale);
         Human buyer2 = new Human("Marcin", "Marciniak", 2000.0, 5500.0);
         Human seller2 = new Human("Tomasz", "Adamek", 40000.0, 1000.0, carForSale);
-
 
 
         System.out.println("\n-------- ANIMAL TRADE ---------");
@@ -107,9 +108,8 @@ public class Main {
                 "\nBuyer cash: " + buyer1.getCash() +
                 "\nBuyer animal: " + buyer1.pet +
                 "\nSeller cash: " + seller1.getCash() +
-                "\nSeller animal: " + seller1.pet+
+                "\nSeller animal: " + seller1.pet +
                 "\n");
-
 
 
         System.out.println("-------- CAR TRADE ---------");
@@ -124,7 +124,7 @@ public class Main {
                 "\nBuyer cash: " + buyer2.getCash() +
                 "\nBuyer car: " + buyer2.getCar() +
                 "\nSeller cash: " + seller2.getCash() +
-                "\nSeller car: " + seller2.getCar()+
+                "\nSeller car: " + seller2.getCar() +
                 "\n");
 
         carForSale.sell(seller2, buyer2, 3000.0);
@@ -133,9 +133,8 @@ public class Main {
                 "\nBuyer cash: " + buyer2.getCash() +
                 "\nBuyer car: " + buyer2.getCar() +
                 "\nSeller cash: " + seller2.getCash() +
-                "\nSeller car: " + seller2.getCar()+
+                "\nSeller car: " + seller2.getCar() +
                 "\n");
-
 
 
         System.out.println("--------- PHONE TRADE ---------");
@@ -152,9 +151,8 @@ public class Main {
                 "\nBuyer cash: " + buyer2.getCash() +
                 "\nBuyer phone: " + buyer2.getPhone() +
                 "\nSeller cash: " + seller2.getCash() +
-                "\nSeller phone: " + seller2.getPhone()+
+                "\nSeller phone: " + seller2.getPhone() +
                 "\n");
-
 
 
         phone.sell(seller2, buyer2, 300.0);
@@ -168,5 +166,16 @@ public class Main {
 
         // human.sell(human2, human3, 1.1); - can't sell human, because method sell(Human human, Human human, Double price) not exist in human class
 
+
+        System.out.println("----------------------------- ZADANIE 9 -----------------------------");
+
+        FarmAnimal cow = new FarmAnimal("cow", "Milka");
+        cow.feed();
+        cow.feed(20.0);
+        cow.beEaten();
+
+        Pet pet = new Pet("dog", "Reksio");
+        pet.feed();
+        pet.feed(3.0);
     }
 }
