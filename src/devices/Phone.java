@@ -2,11 +2,18 @@ package devices;
 
 import com.company.Human;
 
+import java.net.URL;
+import java.util.List;
+
 public class Phone extends Device {
+    static final public String defaultServerAddress = "googleplay.com";
+    static final public String defaultProtocol = "http";
+    static final public String defaultVersionName = "10.0 Final";
     final public String producer;
     final public String model;
     final public Double screenSize;
     final public String operatingSystem;
+
 
     public Phone(String producer, String model, Double screenSize, String operatingSystem) {
         this.producer = producer;
@@ -46,5 +53,30 @@ public class Phone extends Device {
                     " for a price " + price + ".");
 
         }
+
+    }
+
+    public void installAnnApp(String appName) {
+        System.out.println(appName + " has been successfully installed.");
+    }
+
+    public void installAnnApp(String appName, String appVersion) {
+        System.out.println(appName + " v." + appVersion + " has been successfully installed.");
+    }
+
+    public void installAnnApp(String appName, String appVersion, String serverAddress) {
+        System.out.println(appName + " v." + appVersion + " from " + serverAddress + " has been successfully installed.");
+    }
+
+    public void installAnnApp(List<String> appList) {
+        for (String appName : appList
+        ) {
+            System.out.println(appName + " has been successfully installed.");
+        }
+        System.out.println("All " + appList.size() + " apps has been successfully installed!");
+    }
+
+    public void installAnnApp(URL url) {
+        System.out.println(url.getFile().substring(1) + " has been successfully installed."); // improwizowałem :)
     }
 }

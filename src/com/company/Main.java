@@ -3,12 +3,18 @@ package com.company;
 import creatures.Animal;
 import creatures.FarmAnimal;
 import creatures.Pet;
-import devices.Car;
-import devices.Phone;
+import devices.*;
+
+import java.lang.reflect.Array;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MalformedURLException {
 
         System.out.println("----------------------------- ZADANIE 1 -----------------------------");
         Animal animal = new Pet("dog", "Ricki");
@@ -26,7 +32,7 @@ public class Main {
         System.out.println("----------------------------- ZADANIE 2 -----------------------------");
 
         Human human = new Human("Jan", "Kowalski");
-        Car car1 = new Car("Kia", "Stinger", 270, "red");
+        Car car1 = new Diesel("Kia", "Stinger", 270, "red");
 
         // human.car = car1;
 
@@ -37,7 +43,7 @@ public class Main {
 
         System.out.println("----------------------------- ZADANIE 5 -----------------------------");
 
-        Car pasek = new Car("Volkswagen", "Passat", 220, "grey", 5500.0);
+        Car pasek = new Diesel("Volkswagen", "Passat", 220, "grey", 5500.0);
 
         // przypadek 1
         Human human2 = new Human("Janusz", "Nosacz", 400.0);
@@ -53,8 +59,8 @@ public class Main {
 
         System.out.println("----------------------------- ZADANIE 6 -----------------------------");
 
-        Car carA = new Car("Fiat", "126p", 110, "blue");
-        Car carB = new Car("Fiat", "126p", 110, "blue");
+        Car carA = new LPG("Fiat", "126p", 110, "blue");
+        Car carB = new Electric("Fiat", "126p", 110, "blue");
 
         System.out.println("Print whole object:"); // in practice toString() method
         System.out.println(carA);
@@ -80,7 +86,7 @@ public class Main {
 
         System.out.println("----------------------------- ZADANIE 8 -----------------------------");
         Animal petForSale = new Pet("dog", "Mailo");
-        Car carForSale = new Car("Fiat", "Panda", 120, "red", 1000.0, 1998);
+        Car carForSale = new LPG("Fiat", "Panda", 120, "red", 1000.0, 1998);
         Human buyer1 = new Human("Marcin", "Kowalski", 2000.0, 600.0);
         Human seller1 = new Human("Krzysztof", "Krawczyk", 35000.0, 2000.0, petForSale);
         Human buyer2 = new Human("Marcin", "Marciniak", 2000.0, 5500.0);
@@ -177,5 +183,38 @@ public class Main {
         Pet pet = new Pet("dog", "Reksio");
         pet.feed();
         pet.feed(3.0);
+
+        System.out.println("----------------------------- ZADANIE 10 -----------------------------");
+
+        /*
+        W poleceniu był punkt "3. Postaraj się zrobić to w taki sposób, żeby różniło się od kodu, który przerabialiśmy jako przykład na zajęciach ;)"
+        Rozwiązanie pisałem przed zajęciami więc z góry przepraszam, jeżeli rozwiązanie będzie podobne :)
+        */
+
+        List<String> appNameList = Arrays.asList("Facebook", "Twitter", "Angry Birds");
+        URL url = new URL("http", "aplications.com", "/Realcalcv10");
+
+        System.out.println("installAnnApp(String appName): ");
+        phone.installAnnApp("Tinder");
+
+        System.out.println("\ninstallAnnApp(String appName, String appVersion):");
+        phone.installAnnApp("Gmail", "11.1 beta");
+
+        System.out.println("\ninstallAnnApp(String appName, String appVersion, String serverAddress):");
+        phone.installAnnApp("Firefox", "9.0", "www.mozilla.org/pl/firefox/mobile/android/9.0");
+
+        System.out.println("\ninstallAnnApp(List<String> appList):");
+        phone.installAnnApp(appNameList);
+
+        System.out.println("\ninstallAnnApp(URL url):");
+        phone.installAnnApp(url);
+
+        System.out.println("\nRefueling cars");
+        carA.refuel();
+        carB.refuel();
+        car1.refuel();
+
+
+
     }
 }

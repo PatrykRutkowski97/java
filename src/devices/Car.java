@@ -2,7 +2,7 @@ package devices;
 
 import com.company.Human;
 
-public class Car extends Device {
+public abstract class Car extends Device {
     final public String model;
     public Double value;
     public int maxSpeed;
@@ -31,6 +31,9 @@ public class Car extends Device {
         this.value = value;
         this.yearOfProduction = yearOfProduction;
     }
+
+    public abstract void refuel();
+
 
     @Override
     public boolean equals(Object x) {
