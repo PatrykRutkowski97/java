@@ -6,6 +6,7 @@ public abstract class Device implements Saleable {
     public String producer;
     public String mode;
     public int yearOfProduction;
+    public Double value;
 
     public abstract void turnOn();
 

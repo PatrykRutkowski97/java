@@ -2,6 +2,8 @@ package devices;
 
 import com.company.Human;
 
+import java.util.Arrays;
+
 public abstract class Car extends Device {
     final public String model;
     public Double value;
@@ -52,7 +54,7 @@ public abstract class Car extends Device {
 
     @Override
     public String toString() {
-        return producer + " " + model + " " + value + " " + maxSpeed + " " + color;
+        return producer + " " + model + " " + value + " " + maxSpeed + " " + color + " " + yearOfProduction;
     }
 
     @Override
@@ -63,16 +65,28 @@ public abstract class Car extends Device {
 
     @Override
     public void sell(Human seller, Human buyer, Double price) {
-        if (seller.getCar() != this)
+        int numberOfCarsInBuyerGarage = 0;
+        for (int i = 0; i < buyer.garage.length; i++) {
+
+            if (buyer.garage[i] != null)
+                numberOfCarsInBuyerGarage++;
+        }
+
+        if (!Arrays.asList(seller.garage).contains(this))
             System.out.println(seller.firstName + " does not own this car. Transaction failed.");
+        else if (buyer.garage.length <= numberOfCarsInBuyerGarage)
+            System.out.println(buyer.firstName + " has no place in the garage! Transaction failed.");
         else if (buyer.getCash() < price)
             System.out.println(buyer.firstName + " doesn't have enough money. Transaction failed.");
         else {
             buyer.setCash(buyer.getCash() - price);
-            seller.setCash((seller.getCash() + price));
-            seller.setCar(null);
-            buyer.setCar(this);
 
+            int firstFreePlaceInBuyerGarage = numberOfCarsInBuyerGarage; // zmienna dodana dla czytelności
+
+            buyer.garage[firstFreePlaceInBuyerGarage] = this;
+
+            seller.setCash((seller.getCash() + price));
+            seller.garage[Arrays.asList(seller.garage).indexOf(this)] = null;
 
             System.out.println("The transaction was successful!\n" +
                     "Seller " + seller.firstName + " " + seller.lastName +

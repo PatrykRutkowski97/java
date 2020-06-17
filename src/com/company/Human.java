@@ -6,25 +6,29 @@ import devices.Phone;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
 public class Human {
+    private static final int defaultNumberOfCars = 2;
     public String firstName;
     public String lastName;
-    private Double salary;
-    protected Phone phone;
     public Animal pet;
-    private Car car;
+    public Car[] garage;
+    protected Phone phone;
+    private Double salary;
     private Double cash;
 
     public Human(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+        garage = new Car[defaultNumberOfCars];
     }
 
     public Human(String firstName, String lastName, Double salary) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = salary;
+        garage = new Car[defaultNumberOfCars];
     }
 
     public Human(String firstName, String lastName, Double salary, Double cash) {
@@ -32,6 +36,7 @@ public class Human {
         this.lastName = lastName;
         this.salary = salary;
         this.cash = cash;
+        garage = new Car[defaultNumberOfCars];
     }
 
     public Human(String firstName, String lastName, Double salary, Double cash, Animal pet) {
@@ -40,15 +45,17 @@ public class Human {
         this.salary = salary;
         this.cash = cash;
         this.pet = pet;
+        garage = new Car[defaultNumberOfCars];
     }
 
-    public Human(String firstName, String lastName, Double salary, Double cash, Car car) {
+    public Human(String firstName, String lastName, Double salary, Double cash, int garageSize) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = salary;
         this.cash = cash;
-        this.car = car;
+        garage = new Car[garageSize];
     }
+
 
     public Double getSalary() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -68,24 +75,38 @@ public class Human {
         }
     }
 
-    public Car getCar() {
-        return car;
+    public Car getCar(int carPosition) {
+        return garage[carPosition];
     }
 
-    public void setCar(Car car) {
+    public void setCar(Car car, int carPosition) {
         if (car == null) {
-            this.car = null;
-        } else {
-            if (this.salary > car.value) {
-                this.car = car;
-                System.out.println("Congratulations " + this.firstName + "! You bought " + car.producer + " " + car.model + "for cash!");
-            } else if (salary > car.value / 12) {
-                this.car = car;
-                System.out.println("Congratulations " + this.firstName + "! You bought " + car.producer + " " + car.model + " on instalments!");
-            } else
-                System.out.println("Sorry " + this.firstName + ".. You can't afford a car. You should change job or go to university.");
-        }
+            this.garage[carPosition] = null;
+            System.out.println("Error! Car not exist");
+        } else if (this.salary > car.value) {
+            this.garage[carPosition] = car;
+            System.out.println("Congratulations " + this.firstName + "! You bought " + car.producer + " " + car.model + "for cash!");
+        } else if (this.salary > car.value / 12) {
+            this.garage[carPosition] = car;
+            System.out.println("Congratulations " + this.firstName + "! You bought " + car.producer + " " + car.model + " on instalments!");
+        } else
+            System.out.println("Sorry " + this.firstName + ".. You can't afford a car. You should change job or go to university.");
 
+
+    }
+
+    public double calculateSumOfCarsValue() {
+        double sumOfValue = 0;
+        for (Car car : garage
+        ) {
+            if (car != null)
+                sumOfValue += car.value;
+        }
+        return sumOfValue;
+    }
+
+    public void sortGarageByOldCar() {
+        Arrays.sort(garage, new CarComparator());
     }
 
     public Double getCash() {
@@ -106,7 +127,7 @@ public class Human {
 
     @Override
     public String toString() {
-        return firstName + " " + lastName + " " + salary + " " + phone + " " + pet + " " + car;
+        return firstName + " " + lastName + " " + salary + " " + cash + " " + Arrays.asList(garage);
     }
 
 
