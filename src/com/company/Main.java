@@ -32,7 +32,6 @@ public class Main {
         Human human = new Human("Jan", "Kowalski");
         Car car1 = new Diesel("Kia", "Stinger", 270, "red");
 
-        // human.car = car1;
 
         System.out.println("----------------------------- ZADANIE 3 i 4 -----------------------------");
         human.setSalary(-100.0);
@@ -58,7 +57,7 @@ public class Main {
         System.out.println("----------------------------- ZADANIE 6 -----------------------------");
 
         Car carA = new LPG("Fiat", "126p", 110, "blue");
-        Car carB = new Electric("Fiat", "126p", 110, "blue");
+        Car carB = new LPG("Fiat", "126p", 110, "blue");
 
         System.out.println("Print whole object:"); // in practice toString() method
         System.out.println(carA);
@@ -244,14 +243,14 @@ public class Main {
         System.out.println("\nSeller data before transaction: " + humanA);
         System.out.println("Seller garage value: " + humanA.calculateSumOfCarsValue());
         System.out.println("Buyer data before transaction: " + humanB);
-        System.out.println("Buyer garage value: " + humanB.calculateSumOfCarsValue() +"\n");
+        System.out.println("Buyer garage value: " + humanB.calculateSumOfCarsValue() + "\n");
 
         carS1.sell(humanA, humanB, 5000.0);
 
         System.out.println("\nSeller data after transaction: " + humanA);
         System.out.println("Seller garage value: " + humanA.calculateSumOfCarsValue());
         System.out.println("Buyer data after transaction: " + humanB);
-        System.out.println("Buyer garage value: " + humanB.calculateSumOfCarsValue() +"");
+        System.out.println("Buyer garage value: " + humanB.calculateSumOfCarsValue() + "");
 
         System.out.println("\n\n---- sorting the garage by car year ----");
         System.out.println("\nunsorted garage:");
@@ -260,5 +259,59 @@ public class Main {
         System.out.println("\nsorted garage:");
         humanB.sortGarageByOldCar();
         System.out.println(Arrays.asList(humanB.garage));
+
+        System.out.println("----------------------------- ZADANIE 12 -----------------------------");
+        /*
+        Zadanie 13.3: Każda transakcja sprzedaży powinna dodawać nowy element do listy.
+        Przyjąłem, że metoda setCar(Car car) w klasie Human też jest transakcją.
+        W końcu obiekt klasy Human po użyciu metody setCar() też jest właścicielem samochodu.
+
+        Analogicznie przyjąłem w wersji dla chętnych z listą transakcji.
+
+        Kod z wersją właścicieli pojazdów zakomentowałem, byłbym wdzięczny za rzucenie okiem również na niego (przede wszystkim co można poprawić/napisać lepiej).
+        */
+
+
+        Human human5 = new Human("Tom", "Hanks", 20000.0, 1000000.0);
+        Human human6 = new Human("Ted", "Bundy", 10000.0, 200000.0);
+        Car auto = new LPG("Fiat", "126p", 120, "White", 2000.0);
+
+        System.out.println("checking the transaction list for a car without an owner:");
+        System.out.println(auto.transactionList);
+
+        System.out.println("\nchecking if the person has ever owned a no one's car :");
+        System.out.println(auto.wasHumanCarOwner(human5));
+
+        System.out.println("\nchecking the number of sales transactions a no one's car :");
+        System.out.println(auto.getNumberOfTransaction());
+
+        System.out.println("\nsetCar():");
+        human5.setCar(auto, 0);
+
+        System.out.println("\nchecking the transaction list after the setCar(Car car) method:");
+        System.out.println(auto.transactionList);
+
+        System.out.println("\nchecking the number of sales transactions after the setCar(Car car) method:");
+        System.out.println(auto.getNumberOfTransaction());
+
+        System.out.println("\nchecking if man A sold the car to man B before transaction:");
+        System.out.println(auto.checkIfTransactionExist(human5, human6));
+
+        System.out.println("\nsell():");
+        auto.sell(human5, human6, 2000.0);
+
+        System.out.println("\nchecking the transaction list after the sell() method:");
+        System.out.println(auto.transactionList);
+
+        System.out.println("\nchecking the number of sales transactions after the setCar(Car car) and sell() methods:");
+        System.out.println(auto.getNumberOfTransaction());
+
+        System.out.println("\nchecking if the first owner ever owned the car:");
+        System.out.println(auto.wasHumanCarOwner(human5));
+
+        System.out.println("\nchecking if man A sold the car to man B after transaction:");
+        System.out.println(auto.checkIfTransactionExist(human5, human6));
+
+
     }
 }

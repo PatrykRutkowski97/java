@@ -7,6 +7,7 @@ import devices.Phone;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Date;
 
 public class Human {
     private static final int defaultNumberOfCars = 2;
@@ -85,9 +86,13 @@ public class Human {
             System.out.println("Error! Car not exist");
         } else if (this.salary > car.value) {
             this.garage[carPosition] = car;
-            System.out.println("Congratulations " + this.firstName + "! You bought " + car.producer + " " + car.model + "for cash!");
+            //car.ownersList.add(this);
+            car.transactionList.add(new Transaction(null, this, car.value));
+            System.out.println("Congratulations " + this.firstName + "! You bought " + car.producer + " " + car.model + " for cash!");
         } else if (this.salary > car.value / 12) {
             this.garage[carPosition] = car;
+            //car.ownersList.add(this);
+            car.transactionList.add(new Transaction(null, this, car.value));
             System.out.println("Congratulations " + this.firstName + "! You bought " + car.producer + " " + car.model + " on instalments!");
         } else
             System.out.println("Sorry " + this.firstName + ".. You can't afford a car. You should change job or go to university.");
