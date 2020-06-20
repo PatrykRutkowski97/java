@@ -131,5 +131,4 @@ public class Human {
     public String toString() {
         return firstName + " " + lastName + " " + salary + " " + cash + " " + Arrays.asList(garage);
     }
-
 }
