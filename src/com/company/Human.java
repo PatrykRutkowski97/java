@@ -57,7 +57,6 @@ public class Human {
         garage = new Car[garageSize];
     }
 
-
     public Double getSalary() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
@@ -96,8 +95,6 @@ public class Human {
             System.out.println("Congratulations " + this.firstName + "! You bought " + car.producer + " " + car.model + " on instalments!");
         } else
             System.out.println("Sorry " + this.firstName + ".. You can't afford a car. You should change job or go to university.");
-
-
     }
 
     public double calculateSumOfCarsValue() {
@@ -134,6 +131,5 @@ public class Human {
     public String toString() {
         return firstName + " " + lastName + " " + salary + " " + cash + " " + Arrays.asList(garage);
     }
-
 
 }
