@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) throws MalformedURLException {
+    public static void main(String[] args) throws Exception {
 
         System.out.println("----------------------------- ZADANIE 1 -----------------------------");
         Animal animal = new Pet("dog", "Ricki");
@@ -313,5 +313,61 @@ public class Main {
         System.out.println(auto.checkIfTransactionExist(human5, human6));
 
 
+        System.out.println("----------------------------- ZADANIE 13 -----------------------------");
+
+        Human androidFan = new Human("Steve", "Jobs", 500.0, 120.0);
+        Phone phone2 = new Phone("Samsung", "S9", 8.7, "Android", androidFan);
+
+        Application app1 = new Application("Facebook", "12.0 beta", 0.0);
+        Application app2 = new Application("Resident Evil", "4", 12.0);
+        Application app3 = new Application("NordVPN", "8.0", 0.0);
+        Application app4 = new Application("Automate", "4.1", 11.0);
+        Application app5 = new Application("Fifa 2020", "1.0", 20.0);
+        Application app6 = new Application("ProteGO", "1.0 beta bety bety", 10000.0);
+        Application app7 = new Application("TeamSpeak", "3.0", 13.0);
+        androidFan.setPhone(phone2);
+
+        System.out.println("HashSet<Application> for new object:");
+        System.out.println(phone2.applications);
+
+        System.out.println("\nChecking if the phone owner has not enough money:");
+        phone2.installApp(app6);
+
+        System.out.println("\nOwner account balance before installing the application: " + androidFan.getCash());
+        phone2.installApp(app2);
+        System.out.println("Owner account balance after installing the application: " + androidFan.getCash());
+
+        System.out.println("\nApps list after single app installation:");
+        System.out.println(phone2.applications);
+
+        System.out.println("\nInstalling more apps:");
+        phone2.installApp(app1);
+        phone2.installApp(app2);
+        phone2.installApp(app3);
+        phone2.installApp(app4);
+        phone2.installApp(app5);
+
+        System.out.println("\nApps list after installation more apps:");
+        System.out.println(phone2.applications);
+
+        System.out.println("\nChecking isAppInstaled methods:");
+        System.out.println(phone2.isAppInstalled(app7));
+        System.out.println(phone2.isAppInstalled("TeamSpeak"));
+
+        phone2.installApp(app7);
+        System.out.println(phone2.isAppInstalled(app7));
+        System.out.println(phone2.isAppInstalled("TeamSpeak"));
+
+        System.out.println("\nPrint all free apps:");
+        phone2.printFreeApps();
+
+        System.out.println("\nGet sum of apps value:");
+        System.out.println(phone2.calculateSumOfApplicationsValue());
+
+        System.out.println("\nChecking print Apps by name method:");
+        phone2.printAllAppsByName();
+
+        System.out.println("\nChecking print Apps by price method:");
+        phone2.printAllAppsByPriceAsc();
     }
 }
