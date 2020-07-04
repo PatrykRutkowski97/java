@@ -131,6 +131,7 @@ public class Phone extends Device {
         Collections.sort(appList, new Comparator<Application>() {
             @Override
             public int compare(Application o1, Application o2) {
+                if (o1 == null) return 1;
                 if (o2 == null) return -1;
                 if (o1.price > o2.price) return 1;
                 else if (o1.price < o2.price) return -1;
