@@ -14,7 +14,6 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        System.out.println("----------------------------- ZADANIE 1 -----------------------------");
         Animal animal = new Pet("dog", "Ricki");
         animal.feed();
         for (int i = 0; i < 8; i++)
@@ -27,18 +26,11 @@ public class Main {
         for (int i = 0; i < 8; i++)
             animal2.takeForWalk();
 
-        System.out.println("----------------------------- ZADANIE 2 -----------------------------");
-
         Human human = new Human("Jan", "Kowalski");
         Car car1 = new Diesel("Kia", "Stinger", 270, "red");
-
-
-        System.out.println("----------------------------- ZADANIE 3 i 4 -----------------------------");
         human.setSalary(-100.0);
         human.setSalary(2999.99);
         human.getSalary();
-
-        System.out.println("----------------------------- ZADANIE 5 -----------------------------");
 
         Car pasek = new Diesel("Volkswagen", "Passat", 220, "grey", 5500.0);
 
@@ -54,8 +46,6 @@ public class Main {
         Human human4 = new Human("Andrzej", "Bogacz", 20000.0);
         human4.setCar(pasek, 0);
 
-        System.out.println("----------------------------- ZADANIE 6 -----------------------------");
-
         Car carA = new LPG("Fiat", "126p", 110, "blue");
         Car carB = new LPG("Fiat", "126p", 110, "blue");
 
@@ -67,7 +57,6 @@ public class Main {
         System.out.println("Car comparison using equals() - without override: was false");
         System.out.println("Car comparison using equals() - after override: " + carA.equals(carB)); // correct comparison
 
-        // ------------ toString() ----------------
 
         Phone phone = new Phone("Samsung", "Note 10", 8.8, "Android");
         System.out.println(animal);
@@ -75,13 +64,10 @@ public class Main {
         System.out.println(pasek);
         System.out.println(human3);
 
-        System.out.println("----------------------------- ZADANIE 7 -----------------------------");
-
         phone.turnOn();
         car1.turnOn();
 
 
-        System.out.println("----------------------------- ZADANIE 8 -----------------------------");
         Animal petForSale = new Pet("dog", "Mailo");
         Car carForSale = new LPG("Fiat", "Panda", 120, "red", 1000.0, 1998);
         Human buyer1 = new Human("Marcin", "Kowalski", 2000.0, 600.0);
@@ -89,8 +75,6 @@ public class Main {
         Human buyer2 = new Human("Marcin", "Marciniak", 2000.0, 5500.0);
         Human seller2 = new Human("Tomasz", "Adamek", 40000.0, 1000.0, 2);
         seller2.setCar(carForSale, 1);
-
-        System.out.println("\n-------- ANIMAL TRADE ---------");
 
         System.out.println("-- checking the case if the buyer does not have enough money: --");
         petForSale.sell(seller1, buyer1, 800.0);
@@ -114,9 +98,6 @@ public class Main {
                 "\nSeller animal: " + seller1.pet +
                 "\n");
 
-
-        System.out.println("-------- CAR TRADE ---------");
-
         System.out.println("-- checking the case if the buyer does not have enough money: --");
         carForSale.sell(seller2, buyer2, 34000.0);
 
@@ -138,9 +119,6 @@ public class Main {
                 "\nSeller cash: " + seller2.getCash() +
                 "\nSeller car: " + seller2.getCar(0) +
                 "\n");
-
-
-        System.out.println("--------- PHONE TRADE ---------");
 
         seller2.setPhone(phone);
 
@@ -170,8 +148,6 @@ public class Main {
         // human.sell(human2, human3, 1.1); - can't sell human, because method sell(Human human, Human human, Double price) not exist in human class
 
 
-        System.out.println("----------------------------- ZADANIE 9 -----------------------------");
-
         FarmAnimal cow = new FarmAnimal("cow", "Milka");
         cow.feed();
         cow.feed(20.0);
@@ -181,12 +157,6 @@ public class Main {
         pet.feed();
         pet.feed(3.0);
 
-        System.out.println("----------------------------- ZADANIE 10 -----------------------------");
-
-        /*
-        W poleceniu był punkt "3. Postaraj się zrobić to w taki sposób, żeby różniło się od kodu, który przerabialiśmy jako przykład na zajęciach ;)"
-        Rozwiązanie pisałem przed zajęciami więc z góry przepraszam, jeżeli rozwiązanie będzie podobne :)
-        */
 
         List<String> appNameList = Arrays.asList("Facebook", "Twitter", "Angry Birds");
         URL url = new URL("http", "aplications.com", "/Realcalcv10");
@@ -210,9 +180,6 @@ public class Main {
         carA.refuel();
         carB.refuel();
         car1.refuel();
-
-
-        System.out.println("----------------------------- ZADANIE 11 -----------------------------");
 
         Human humanA = new Human("Jan", "Nowak", 2000.0, 5000.0);
         Human humanB = new Human("Adam", "Blady", 30000.0, 190000.0, 5);
@@ -260,16 +227,6 @@ public class Main {
         humanB.sortGarageByOldCar();
         System.out.println(Arrays.asList(humanB.garage));
 
-        System.out.println("----------------------------- ZADANIE 12 -----------------------------");
-        /*
-        Zadanie 13.3: Każda transakcja sprzedaży powinna dodawać nowy element do listy.
-        Przyjąłem, że metoda setCar(Car car) w klasie Human też jest transakcją.
-        W końcu obiekt klasy Human po użyciu metody setCar() też jest właścicielem samochodu.
-
-        Analogicznie przyjąłem w wersji dla chętnych z listą transakcji.
-
-        Kod z wersją właścicieli pojazdów zakomentowałem, byłbym wdzięczny za rzucenie okiem również na niego (przede wszystkim co można poprawić/napisać lepiej).
-        */
 
 
         Human human5 = new Human("Tom", "Hanks", 20000.0, 1000000.0);
@@ -311,9 +268,6 @@ public class Main {
 
         System.out.println("\nchecking if man A sold the car to man B after transaction:");
         System.out.println(auto.checkIfTransactionExist(human5, human6));
-
-
-        System.out.println("----------------------------- ZADANIE 13 -----------------------------");
 
         Human androidFan = new Human("Steve", "Jobs", 500.0, 120.0);
         Phone phone2 = new Phone("Samsung", "S9", 8.7, "Android", androidFan);
