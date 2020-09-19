@@ -145,7 +145,6 @@ public class Main {
                 "\nSeller phone: " + seller2.getPhone());
 
 
-        // human.sell(human2, human3, 1.1); - can't sell human, because method sell(Human human, Human human, Double price) not exist in human class
 
 
         FarmAnimal cow = new FarmAnimal("cow", "Milka");
